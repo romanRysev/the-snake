@@ -79,9 +79,12 @@ class Apple(GameObject):
     и его отрисовку.
     """
 
-    def __init__(self, body_color=APPLE_COLOR, locked_positions=None):
+    def __init__(self, body_color=APPLE_COLOR, locked_positions=[]):
         super().__init__((0, 0), body_color)
         self.randomize_position()
+        if locked_positions is None or len(locked_positions) == 0:
+            return
+
         while self.position in locked_positions:
             self.randomize_position()
 
